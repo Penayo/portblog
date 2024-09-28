@@ -1,0 +1,20 @@
+<%= form_with model: [article, article.comments.build] do |form| %>
+  <h4>Post Comments</h4>
+  <p>Your email address will not be published. Required fields are marked * </p>
+
+  <div class="mb-3">
+    <%= form.label :commenter, class: "form-label" %>
+    <%= form.text_field :commenter, class: "form-control", placeholder: "Commenter name" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :body, class: "form-label" %>
+    <%= form.text_area :body, cols: 100, rows: 3, class: "form-control", placeholder: "Write your opinion here" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, class: "form-label" %>
+    <%= form.select :status, Visible::VALID_STATUSES, { selected: "public" }, { class: "form-select" }%>
+  </div>
+
+  <div class="text-center"><%= form.submit class: "btn btn-primary" %></div>
+<% end %>

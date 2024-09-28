@@ -1,0 +1,118 @@
+<div class="page-title">
+  <div class="container d-lg-flex justify-content-between align-items-center">
+    <h1 class="mb-2 mb-lg-0">Blog Details</h1>
+    <nav class="breadcrumbs">
+      <div class="row">
+        <div class="col">
+          <div class="d-flex flex-row-reverse">
+            <div class="p-2">
+              <%= link_to 'Destroy', article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+            </div>
+            <div class="p-2">
+              <%= link_to 'Edit Article', edit_article_path(@article) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <section id="blog-details" class="blog-details section">
+        <div class="container">
+
+          <article class="article">
+            
+            <div class="post-img">
+              <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+            </div>
+
+            <h2 class="title"><%= @article.title %></h2>
+
+            <div class="meta-top">
+              <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
+              </ul>
+            </div>
+
+            <div class="content">
+              <%= @article.body.html_safe %>
+            </div>
+
+            <div class="meta-bottom">
+              <i class="bi bi-folder"></i>
+              <ul class="cats">
+                <li><a href="#">Business</a></li>
+              </ul>
+
+              <i class="bi bi-tags"></i>
+              <ul class="tags">
+                <li><a href="#">Creative</a></li>
+                <li><a href="#">Tips</a></li>
+                <li><a href="#">Marketing</a></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- END of article section -->
+
+      <!-- AUTHOR SECTION -->
+      <section id="blog-author" class="blog-author section">
+        <div class="container">
+          <div class="author-container d-flex align-items-center">
+            <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
+            <div>
+              <h4>Jane Smith</h4>
+              <div class="social-links">
+                <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+              </div>
+              <p>
+                Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+      <section id="blog-comments" class="blog-comments section">
+        <div class="container">
+          <h4 class="comments-count">8 Comments</h4>
+
+          <%= render @article.comments, article: @article %>
+        </div>
+      </section>
+
+      
+      <section id="comment-form" class="comment-form section">
+        <div class="container">
+
+          <%= render "comments/form", article: @article %>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-lg-4 sidebar">
+      <div class="widgets-container">
+
+
+        <!-- Search Widget -->
+        <div class="search-widget widget-item">
+
+          <h3 class="widget-title">Search</h3>
+          <form action="">
+            <input type="text">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+          </form>
+
+        </div>
+      </div>
+    </div>

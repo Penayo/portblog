@@ -1,0 +1,50 @@
+<div class="container" data-controller="article-form">
+  <%= form_with model: article, id: "article-form" do |form| %>
+    <div class="row">
+      <div class="col-lg-8">
+        <section class="blog-details">
+          <div class="container">
+            <article class="article">
+              <div class="">
+                <%= form.text_field :title, class: "title" %>
+                <% article.errors.full_messages_for(:title).each do |message| %>
+                  <div><small><%= message %></small></div>
+                <% end %>
+              </div>
+
+              <%= form.hidden_field :body %>
+              <!-- Quill Editor Default -->
+              <div id="editor" class="content mt-0">
+                <%= article.body.html_safe %>
+              </div>
+              <!-- End Quill Editor Default -->
+
+              <div class="pt-2 text-end">
+                <button class="btn btn-primary" data-action="article-form#submit_form">Save Article</button>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-lg-4 sidebar">
+        <div class="widgets-container">
+          
+          <div class="mb-3">
+            <%= form.label :category, class: "form-label" %>
+            <%= form.text_field :category, class: "form-control" %>
+            <% article.errors.full_messages_for(:category).each do |message| %>
+              <div><small><%= message %></small></div>
+            <% end %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :status, class: "form-label" %>
+            <%= form.select :status, Visible::VALID_STATUSES, { selected: article.status || "public" }, { class: "form-select" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

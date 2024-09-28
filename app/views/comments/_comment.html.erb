@@ -1,0 +1,22 @@
+
+<% unless comment.archived? %>
+  <div id="comment-<%= comment.id %>" class="comment">
+    <div class="d-flex">
+
+      <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
+      <div>
+        <h5>
+          <%= link_to comment.commenter %>
+          <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a>
+          <%= link_to 'Edit Comment', edit_article_comment_path(comment) %>
+          <%= link_to 'Destroy Comment', [comment.article, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </h5>
+
+        <time datetime="<%= comment.created_at %>"><%= comment.created_at %></time>
+
+        <p><%= comment.body.html_safe %></p>
+      </div>
+
+    </div>
+  </div>
+<% end %>
