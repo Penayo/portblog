@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# portblog
+A blog and portfolio platform writen in rails 7
