@@ -5,8 +5,19 @@
 <div class="container aos-init aos-animate" data-aos="fade-up">
   <%= form_with model: @author do |form| %>
     <div class="mb-3">
-      <%= form.label :full_name, class: "form-label" %>
-      <%= form.text_field :full_name, class: "form-control" %>
+      <%= form.label :first_name, class: "form-label" %>
+      <%= form.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :last_name, class: "form-label" %>
+      <%= form.text_field :last_name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.submit "Add Author", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
