@@ -13,8 +13,26 @@
   <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 
     <div class="row gy-5">
-      <% @authors.each do |autor| %>
-      <% end %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @authors.each do |author| %>
+            <tr>
+              <th scope="row"><%= author.id %></th>
+              <td><%= author.first_name %></td>
+              <td><%= author.last_name  %></td>
+              <td><%= author.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
 
   </div>
