@@ -27,16 +27,16 @@
           <article class="article">
             
             <div class="post-img">
-              <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+              <%= image_tag @article.main_img, class: "img-fluid" if @article.main_img.attached? %>
             </div>
 
             <h2 class="title"><%= @article.title %></h2>
 
             <div class="meta-top">
               <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i><%= link_to @article.author.full_name, author_path(@article.author) %></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><%= time_tag(@article.created_at) %></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i><%= @article.comments.length %> Comments</li>
               </ul>
             </div>
 

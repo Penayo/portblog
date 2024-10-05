@@ -20,7 +20,7 @@
             <article>
 
               <div class="post-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                <%= image_tag article.main_img, class: "img-fluid" if article.main_img.attached? %>
               </div>
 
               <p class="post-category"><%= article.category %></p>
@@ -30,9 +30,9 @@
               </h2>
 
               <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <%= image_tag article.author.profile_image, alt: "", class: "img-fluid post-author-img flex-shrink-0" if article.author.profile_image.attached? %>
                 <div class="post-meta">
-                  <p class="post-author">Author name</p>
+                  <p class="post-author"><%= article.author.full_name %></p>
                   <p class="post-date">
                     <time datetime="<%= article.created_at %>"><%= article.created_at %></time>
                   </p>
