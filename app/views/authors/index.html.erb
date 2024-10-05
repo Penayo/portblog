@@ -1,39 +1,43 @@
 <!-- Page Title -->
 <div class="page-title">
   <div class="container d-lg-flex justify-content-between align-items-center">
-    <h1 class="mb-2 mb-lg-0">Authors</h1>
     <nav class="breadcrumbs">
-      <%= link_to "Register", new_author_path %>
     </nav>
   </div>
 </div>
 <!-- End Page Title -->
 
-<section id="team-section" class="team-section section">
-  <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+<section id="team-section" class="team section">
 
-    <div class="row gy-5">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @authors.each do |author| %>
-            <tr>
-              <th scope="row"><%= author.id %></th>
-              <td><%= author.first_name %></td>
-              <td><%= author.last_name  %></td>
-              <td><%= author.email %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <!-- Section Title -->
+  <div class="container section-title">
+    <h2>Our Authors</h2>
+    <p>Share your ideas and knowledge with others, be part of our Authors <%= link_to "Register", new_author_path %> </p>
+  </div><!-- End Section Title -->
+
+  <div class="container aos-init aos-animate" data-aos-delay="100">
+    
+    <div class="row gy-5 justify-content-center">
+
+      <% @authors.each do |author| %>
+        <div class="col-xl-4 col-md-6 d-flex" data-aos-delay="600">
+          <div class="team-member">
+            <div class="member-img">
+              <%= image_tag (author.profile_image), size: '400x300' if author.profile_image.attached? %>
+            </div>
+            <div class="member-info">
+              <div class="social">
+                <a href=""><i class="bi bi-twitter-x"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+              <h4><%= link_to author.first_name + " " + author.last_name, edit_author_path(author) %></h4>
+              <span>HEADLINE</span>
+            </div>
+          </div>
+        </div><!-- End Team Member -->
+      <% end %>
     </div>
-
   </div>
-</div>
+</section>
