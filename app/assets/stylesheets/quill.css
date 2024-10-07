@@ -742,6 +742,7 @@
   background-color: #23241f;
   color: #f8f8f2;
   overflow: visible;
+  font-size: 14px;
 }
 .ql-snow .ql-editor img {
   max-width: 100%;
