@@ -1,4 +1,12 @@
 <div class="container" data-controller="article-form">
+  <% if article.errors and !article.errors.empty? %>
+    <div class="alert alert-danger" role="alert">
+      <% article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+  <% end %>
+
   <%= form_with model: article, id: "article-form" do |form| %>
     <div class="row">
       <div class="col-lg-8">
@@ -21,9 +29,10 @@
               </div>
 
               <%= form.hidden_field :body %>
+              <%= form.hidden_field :author_id, value: current_author.id if @current_user.present? %>
               <!-- Quill Editor Default -->
               <div id="editor" class="content mt-0">
-                <%= article.body.html_safe %>
+                <%= article.body.html_safe if article.body.present? %>
               </div>
               <!-- End Quill Editor Default -->
 
