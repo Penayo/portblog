@@ -34,7 +34,7 @@
                 <div class="post-meta">
                   <p class="post-author"><%= article.author.full_name %></p>
                   <p class="post-date">
-                    <time datetime="<%= article.created_at %>"><%= article.created_at %></time>
+                    <%= time_tag article.created_at %>
                   </p>
                 </div>
               </div>
