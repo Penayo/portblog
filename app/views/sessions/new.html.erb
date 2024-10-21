@@ -1,0 +1,49 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+      <div class="d-flex justify-content-center py-4">
+        <a href="index.html" class="logo d-flex align-items-center w-auto">
+          <img src="assets/img/logo.png" alt="">
+          <span class="d-none d-lg-block">Coding Skills</span>
+        </a>
+      </div><!-- End Logo -->
+
+      <div class="card w-100">
+        <div class="card-body">
+
+          <div class="pt-4 pb-2">
+            <h5 class="card-title text-center pb-0 fs-4">Login to your Account</h5>
+          </div>
+
+          <%= form_with(model: @user, url: sessions_path, local: true) do |f| %>
+
+            <!-- Display error message of form -->
+            <% if !@user.present? %>
+              <div class="alert alert-danger" role="alert">
+                Wrong login data!
+              </div>
+            <% end %>
+
+            <!-- Field of sessoin form -->
+            <div class='mt-2'>
+              <%= f.label :email, class: "form-label" %>
+              <%= f.text_field :email, class: "form-control", placeholder: 'Please enter email id' %>
+            </div>
+
+            <div class='mt-4'>
+              <%= f.label :password, class: "form-label" %>
+              <%= f.password_field :password, class: "form-control", placeholder: 'Please enter password' %>
+            </div>
+
+            <div class='mt-2'>
+              <%= f.submit 'Sign In', class: "btn btn-primary" %> or <%= link_to "Create an account", new_user_path %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
