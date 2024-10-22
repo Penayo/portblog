@@ -12,18 +12,18 @@
   <!-- Section Title -->
   <div class="container section-title">
     <h2>Our Authors</h2>
-    <p>Share your ideas and knowledge with others, be part of our Authors <%= link_to "Register", new_author_path %> </p>
+    <p>Share your ideas and knowledge with others, be part of our Authors <%= link_to "Register", new_account_path %> </p>
   </div><!-- End Section Title -->
 
   <div class="container aos-init aos-animate" data-aos-delay="100">
     
     <div class="row gy-5 justify-content-center">
 
-      <% @authors.each do |author| %>
+      <% @accounts.each do |account| %>
         <div class="col-xl-4 col-md-6 d-flex" data-aos-delay="600">
           <div class="team-member">
             <div class="member-img">
-              <%= image_tag (author.profile_image), size: '400x300' if author.profile_image.attached? %>
+              <%= image_tag (account.profile_img), size: '400x300' if account.profile_img.attached? %>
             </div>
             <div class="member-info">
               <div class="social">
@@ -32,8 +32,8 @@
                 <a href=""><i class="bi bi-instagram"></i></a>
                 <a href=""><i class="bi bi-linkedin"></i></a>
               </div>
-              <h4><%= link_to author.first_name + " " + author.last_name, edit_author_path(author) %></h4>
-              <span><%= author.headline %></span>
+              <h4><%= link_to account.full_name, edit_account_path(account) %></h4>
+              <span><%= account.headline or "Your headline: edit it in you profile" %></span>
             </div>
           </div>
         </div><!-- End Team Member -->

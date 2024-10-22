@@ -30,9 +30,9 @@
               </h2>
 
               <div class="d-flex align-items-center">
-                <%= image_tag article.author.profile_image, alt: "", class: "img-fluid post-author-img flex-shrink-0" if article.author.profile_image.attached? %>
+                <%= image_tag article.author.profile_img, alt: "", class: "img-fluid post-author-img flex-shrink-0" if article.author.present? and article.author.profile_img.attached? %>
                 <div class="post-meta">
-                  <p class="post-author"><%= article.author.full_name %></p>
+                  <p class="post-author"><%= article.author.full_name if article.author.present? %></p>
                   <p class="post-date">
                     <%= time_tag article.created_at %>
                   </p>

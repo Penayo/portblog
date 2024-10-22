@@ -1,8 +1,9 @@
 class Article < ApplicationRecord
   include Visible
 
+  belongs_to :author, class_name: 'Account'
   has_many :comments, dependent: :destroy
-  belongs_to :author
+
   has_one_attached :main_img
 
   validates :title, presence: true

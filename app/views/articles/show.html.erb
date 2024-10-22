@@ -25,7 +25,7 @@
 
             <div class="meta-top">
               <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-person"></i><%= link_to @article.author.full_name, author_path(@article.author) %></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i><%= link_to @article.author.full_name, account_path(@article.author) if @article.author.present? %></a></li>
                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><%= time_tag(@article.created_at) %></a></li>
                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i><%= @article.comments.length %> Comments</li>
               </ul>
@@ -59,7 +59,7 @@
           <div class="author-container d-flex align-items-center">
             <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
             <div>
-              <h4>Jane Smith</h4>
+              <h4><%= @article.author.full_name %></h4>
               <div class="social-links">
                 <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
                 <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
@@ -76,7 +76,7 @@
     
       <section id="blog-comments" class="blog-comments section">
         <div class="container">
-          <h4 class="comments-count">8 Comments</h4>
+          <h4 class="comments-count"><%= @article.comments.length %> Comments</h4>
 
           <%= render @article.comments, article: @article %>
         </div>

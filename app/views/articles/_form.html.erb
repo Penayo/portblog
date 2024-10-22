@@ -29,7 +29,7 @@
               </div>
 
               <%= form.hidden_field :body %>
-              <%= form.hidden_field :author_id, value: current_author.id if @current_user.present? %>
+              <%= form.hidden_field :author_id, value: current_user.id if @current_user.present? %>
               <!-- Quill Editor Default -->
               <div id="editor" class="content mt-0">
                 <%= article.body.html_safe if article.body.present? %>

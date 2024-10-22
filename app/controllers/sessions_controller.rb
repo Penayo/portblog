@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @account = Account.find_by(email: params[:user][:email])
+    @account = Account.find_by(email: params[:account][:email])
 
     if @account.present? && @account.authenticate(params[:user][:password])
       session[:user_id] = @account.id
