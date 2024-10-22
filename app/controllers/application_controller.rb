@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
-  helper_method :current_author
   helper_method :user_signed_in?
   before_action :require_login
 
@@ -8,15 +7,11 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def current_user
-    @current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
-  end
-
-  def current_author
-    @current_author ||= session[:user_id] && Author.find_by(user_id: session[:user_id])
+    @current_user ||= session[:user_id] && Account.find_by(id: session[:user_id])
   end
 
   def require_login
-    redirect_to new_session_path, flash: { danger: "You must be signed in" } if current_user.nil?
+    redirect_to login_path, flash: { danger: "You must be signed in" } if current_user.nil?
   end
 
   def user_signed_in?

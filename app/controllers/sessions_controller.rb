@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
   before_action :redirect_if_authenticated, only: [ :new, :create ]
 
   def new
-    @user = User.new
+    @user = Account.new
   end
 
   def create
-    @user = User.find_by(email: params[:user][:email])
+    @account = Account.find_by(email: params[:user][:email])
 
-    if @user.present? && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
+    if @account.present? && @account.authenticate(params[:user][:password])
+      session[:user_id] = @account.id
       redirect_to root_path, flash: { success: "Logged in successfully" }
     else
       render :new, status: :unprocessable_entity
