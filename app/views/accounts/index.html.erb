@@ -32,7 +32,7 @@
                 <a href=""><i class="bi bi-instagram"></i></a>
                 <a href=""><i class="bi bi-linkedin"></i></a>
               </div>
-              <h4><%= link_to account.full_name, edit_account_path(account) %></h4>
+              <h4><%= link_to account.full_name, account_path(account) %></h4>
               <span><%= account.headline or "Your headline: edit it in you profile" %></span>
             </div>
           </div>

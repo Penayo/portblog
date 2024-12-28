@@ -41,7 +41,7 @@ class AccountsController < ApplicationController
 
   private
     def update_account_params
-      params.require(:account).permit([:first_name, :last_name, :headline, :status, :profile_img])
+      params.require(:account).permit([:first_name, :last_name, :headline, :about, :status, :profile_img])
     end
 
     def create_account_params

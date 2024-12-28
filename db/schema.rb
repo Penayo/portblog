@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_22_092449) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_28_002216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string "email"
-    t.string "first_name"
-    t.string "last_name"
     t.string "status", default: "inactive"
     t.string "headline"
     t.string "password_digest"
     t.boolean "email_confirmed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "about"
+    t.string "name"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -65,20 +65,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_092449) do
     t.index ["author_id"], name: "index_articles_on_author_id"
   end
 
-  create_table "authors", force: :cascade do |t|
-    t.string "full_name"
-    t.string "email"
-    t.string "profile_img"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "status"
-    t.string "headline"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_authors_on_user_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
@@ -86,21 +72,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_092449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.bigint "response_id"
     t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["response_id"], name: "index_comments_on_response_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "password_digest"
+  create_table "contacts", force: :cascade do |t|
+    t.string "full_name"
     t.string "email"
-    t.boolean "email_confirmed"
-    t.string "status", default: "inactive"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "articles", "authors"
-  add_foreign_key "authors", "users"
+  add_foreign_key "articles", "accounts", column: "author_id"
   add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "comments", column: "response_id"
 end

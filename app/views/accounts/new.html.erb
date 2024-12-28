@@ -2,7 +2,7 @@
   <div class="card-body">
 
     <div class="pt-4 pb-2">
-      <h5 class="card-title text-center pb-0 fs-4">Create and account</h5>
+      <h5 class="card-title text-center pb-0 fs-4">Creating Account</h5>
     </div>
 
     <%= form_with(model: @account, url: accounts_path, local: true, id: "account") do |f| %>
@@ -17,13 +17,8 @@
       <% end %>
 
       <div class="mt-2">
-        <%= f.label :first_name, class: "form-label" %>
-        <%= f.text_field :first_name, class: "form-control" %>
-      </div>
-
-      <div class="mb-4 mt-2">
-        <%= f.label :last_name, class: "form-label" %>
-        <%= f.text_field :last_name, class: "form-control" %>
+        <%= f.label :name, class: "form-label" %>
+        <%= f.text_field :name, class: "form-control" %>
       </div>
 
       <!-- Field of registration form -->
