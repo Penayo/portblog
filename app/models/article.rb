@@ -2,7 +2,7 @@ class Article < ApplicationRecord
   include Visible
 
   belongs_to :author, class_name: 'Account'
-  has_many :comments, dependent: :destroy
+  has_many :comments, -> { direct_comments }, dependent: :destroy
 
   has_one_attached :main_img
 

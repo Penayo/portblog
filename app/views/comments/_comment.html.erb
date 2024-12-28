@@ -1,22 +1,22 @@
 
 <% unless comment.archived? %>
-  <div id="comment-<%= comment.id %>" class="comment">
-    <div class="d-flex">
-
-      <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
-      <div>
-        <h5>
-          <%= link_to comment.commenter %>
-          <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a>
-          <%= link_to 'Edit Comment', edit_article_comment_path(comment) %>
-          <%= link_to 'Destroy Comment', [comment.article, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        </h5>
-
-        <time datetime="<%= comment.created_at %>"><%= comment.created_at %></time>
-
-        <p><%= comment.body.html_safe %></p>
+  <div id="comment-<%= comment.id %>" class="comment <%= "mt-1" if comment.response_id.present? %> " data-controller="comment">
+    <div class="w-100">
+      <div class="row">
+        <div class="col-6"><h5><%= comment.commenter %></h5></div>
+        <div class="col-6 text-end">
+          <%= time_tag comment.created_at, comment.created_at.to_formatted_s(:short) %>
+          <%= link_to 'Reply', article_comment_reply_path(comment.article, comment), data: { turbo_stream: true }, class: "btn btn-sm btn-outline-secondary" %>
+          <%= link_to 'Edit', edit_article_comment_path(comment.article, comment), class: "btn btn-sm btn-outline-secondary" %>
+          <%= link_to 'Destroy', [comment.article, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-secondary" %>
+        </div>
       </div>
 
+      <p><%= comment.body.html_safe %></p>
+    </div>
+
+    <div class="ps-3">
+      <%= render comment.responses %>
     </div>
   </div>
 <% end %>

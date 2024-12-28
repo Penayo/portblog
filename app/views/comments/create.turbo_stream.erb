@@ -1,0 +1,9 @@
+<% element_id = @comment.response_id.present? ? "comment-#{@comment.response_id}" : "comment-list" %>
+
+<%= turbo_stream.append element_id do %>
+  <div class="<%= 'ps-3' if @comment.response_id.present? %>">
+    <%= render "comment", comment: @comment %>
+  </div>
+<% end %>
+
+<%= turbo_stream.remove "reply-container-#{@comment.response_id}" %>

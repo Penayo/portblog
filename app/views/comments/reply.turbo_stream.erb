@@ -1,0 +1,5 @@
+<%= turbo_stream.append "comment-#{@reply.response_id}" do %>
+  <div class="ps-5" id="reply-container-<%= @reply.response_id %>">
+    <%= render "form", article: @article, comment: @reply %>
+  </div>
+<% end %>
