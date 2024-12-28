@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "home/index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,10 +12,12 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  root "articles#index"
+  root "home#index"
 
-  resources "articles" do
-    resources "comments"
+  resources :articles do
+    resources :comments do
+      get "reply" => :reply
+    end
   end
 
   resources "authors"
@@ -22,4 +25,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [ :new, :create, :destroy ]
   get "login" => "sessions#new"
+
+  get "automation-service" => "landing_pages#automation_service"
+  post "automation-service-create_contact" => "landing_pages#create_contact"
 end
