@@ -234,7 +234,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 45px;
   margin-right: 8px;
 }
 
@@ -923,19 +923,19 @@ section,
 
 @media (min-width: 992px) {
   .hero .animated {
-    max-width: 45%;
+    max-width: 260px;
   }
 }
 
 @media (max-width: 991px) {
   .hero .animated {
-    max-width: 60%;
+    max-width: 260px;
   }
 }
 
 @media (max-width: 575px) {
   .hero .animated {
-    max-width: 80%;
+    max-width: 260px;
   }
 }
 
@@ -2736,8 +2736,7 @@ section,
 }
 
 .blog-comments .comment time {
-  display: block;
-  font-size: 14px;
+  font-size: 12px;
   color: color-mix(in srgb, var(--default-color), transparent 40%);
   margin-bottom: 5px;
 }

@@ -7,9 +7,12 @@ class SessionsController < ApplicationController
   end
 
   def create
+    puts "Creating a session"
+    puts params.inspect
+
     @account = Account.find_by(email: params[:account][:email])
 
-    if @account.present? && @account.authenticate(params[:user][:password])
+    if @account.present? && @account.authenticate(params[:account][:password])
       session[:user_id] = @account.id
       redirect_to root_path, flash: { success: "Logged in successfully" }
     else
